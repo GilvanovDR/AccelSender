@@ -6,12 +6,13 @@ public class Main {
 
     private static SerialPort serialPort;
 
-    static String portFinder() {
+    private static String portFinder()   {
         String stat ="failed - Port no found";
         SerialPortList serialPortList = new SerialPortList();
         for (String portlist :serialPortList.getPortNames()){
             serialPort = new SerialPort(portlist);
             String test;
+            System.out.println(portlist + " search...");
             try {
                 serialPort.openPort();
                 serialPort.setParams(SerialPort.BAUDRATE_9600,
@@ -29,10 +30,14 @@ public class Main {
                 serialPort.closePort();
                 if ((test != null)&&(test.contains("accelstart"))) {
                     stat = portlist;
+                    System.out.println(portlist + " successfully...");
                     break;
                 }
+                System.out.println(portlist + " not found...");
+
             }
             catch (SerialPortException ex) {
+                System.out.println(portlist + " not found...");
                 stat ="failed " + ex.toString();
             }
         }
@@ -40,11 +45,14 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
+        String port = portFinder();
         //Todo сделать проверку на "Failed"
+        if (port.contains("failed")) System.out.println("AccelSensor in not connected...");
+        else {
         serialPort = new SerialPort(portFinder());
         //todo допилить трап сендер
         TrapSender trap = new TrapSender();
-        trap.sendTrap("192.168.111.103"); //todo получить аргументы параметров запуска IP
+        //trap.sendTrap("192.168.111.103"); //todo получить аргументы параметров запуска IP
         try {
             serialPort.openPort();
             //Выставляем параметры
@@ -59,9 +67,9 @@ public class Main {
             serialPort.addEventListener(new PortReader(), SerialPort.MASK_RXCHAR);
         }
         catch (SerialPortException ex) {
-            System.out.println("Failed " + ex);
+            System.out.println("failed " + ex);
         }
-    }
+    }}
     private static class PortReader implements SerialPortEventListener {
         public void serialEvent(SerialPortEvent event) {
             if(event.isRXCHAR() && event.getEventValue() > 0){
