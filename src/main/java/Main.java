@@ -1,11 +1,29 @@
 
 import jssc.*;
 
+import javax.xml.bind.SchemaOutputResolver;
 import java.io.IOException;
+import java.util.StringTokenizer;
+
 public class Main {
-
+    private  static int X,Y,Z;
     private static SerialPort serialPort;
+    private static void parcer(String str1){
+        int[] res = new int[3];
+        StringTokenizer st = new StringTokenizer(str1," ");
+        if (st.countTokens()<3) {
+            X = 0;
+            Y = 0;
+            Z = 0;
 
+        }
+        else {
+            X = Integer.parseInt(st.nextToken());
+            Y = Integer.parseInt(st.nextToken());
+            Z = Integer.parseInt(st.nextToken());
+        }
+
+    }
     private static String portFinder()   {
         String stat ="failed - Port no found";
         SerialPortList serialPortList = new SerialPortList();
@@ -45,14 +63,16 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
+        for (String stt :args){
+            System.out.println(stt);
+        }
         String port = portFinder();
-        //Todo сделать проверку на "Failed"
         if (port.contains("failed")) System.out.println("AccelSensor in not connected...");
         else {
-        serialPort = new SerialPort(portFinder());
+        serialPort = new SerialPort(port);
         //todo допилить трап сендер
         TrapSender trap = new TrapSender();
-        //trap.sendTrap("192.168.111.103"); //todo получить аргументы параметров запуска IP
+        trap.sendTrap("192.168.111.103"); //todo получить аргументы параметров запуска IP
         try {
             serialPort.openPort();
             //Выставляем параметры
@@ -75,10 +95,9 @@ public class Main {
             if(event.isRXCHAR() && event.getEventValue() > 0){
                 try {
                     //Получаем ответ от устройства, обрабатываем данные и т.д.
-                    String data = serialPort.readString(event.getEventValue());
+                    parcer(serialPort.readString(event.getEventValue()));
                     //И снова отправляем запрос
-                    System.out.println(data);
-                    //    todo распарсить строку на x y z
+                    System.out.println(""+ X + Y + Z);
                     //    todo сделать проверку на превышения порога получить из параметров запуска
                     //serialPort.writeString("Get data");
                 }

@@ -1,10 +1,10 @@
 <component name="ArtifactManager">
-  <artifact type="jar" build-on-make="true" name="AccelSenderLast:jar">
+  <artifact type="jar" name="AccelSenderLast:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/AccelSenderLast_jar</output-path>
     <root id="archive" name="AccelSenderLast.jar">
       <element id="module-output" name="AccelSenderLast" />
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/../AccelSenderLast/src/main/java/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" />
       </element>
     </root>
   </artifact>
