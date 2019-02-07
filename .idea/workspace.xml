@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3546c0b8-30b5-49c7-85d1-dd259aa9286b" name="Default" comment="Проверка наличия датчика на COM">
-      <change beforePath="$PROJECT_DIR$/../AccelSenderLast/.idea/artifacts/AccelSenderLast_jar.xml" afterPath="$PROJECT_DIR$/../AccelSenderLast/.idea/artifacts/AccelSenderLast_jar.xml" />
+    <list default="true" id="3546c0b8-30b5-49c7-85d1-dd259aa9286b" name="Default" comment="TODO Аргументы запуска">
       <change beforePath="$PROJECT_DIR$/../AccelSenderLast/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../AccelSenderLast/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/../AccelSenderLast/out/artifacts/AccelSenderLast_jar/AccelSenderLast.jar" afterPath="$PROJECT_DIR$/../AccelSenderLast/out/artifacts/AccelSenderLast_jar/AccelSenderLast.jar" />
       <change beforePath="$PROJECT_DIR$/../AccelSenderLast/src/main/java/Main.java" afterPath="$PROJECT_DIR$/../AccelSenderLast/src/main/java/Main.java" />
       <change beforePath="$PROJECT_DIR$/../AccelSenderLast/target/AccelSender-3.jar" afterPath="$PROJECT_DIR$/../AccelSenderLast/target/AccelSender-3.jar" />
       <change beforePath="$PROJECT_DIR$/../AccelSenderLast/target/classes/Main$PortReader.class" afterPath="$PROJECT_DIR$/../AccelSenderLast/target/classes/Main$PortReader.class" />
@@ -37,8 +35,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../AccelSenderLast/src/main/java/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="100" column="26" lean-forward="false" selection-start-line="100" selection-start-column="26" selection-end-line="100" selection-end-column="26" />
+            <state relative-caret-position="352">
+              <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -354,7 +352,7 @@
       <workItem from="1549420981377" duration="3758000" />
       <workItem from="1549437486173" duration="2931000" />
       <workItem from="1549448408955" duration="4251000" />
-      <workItem from="1549521380553" duration="2859000" />
+      <workItem from="1549521380553" duration="4274000" />
     </task>
     <task id="LOCAL-00001" summary="+ Скетч">
       <created>1549439612519</created>
@@ -370,13 +368,20 @@
       <option name="project" value="LOCAL" />
       <updated>1549453027480</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Данные из Ком распарсены на XYZ">
+      <created>1549532012768</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1549532012769</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16884000" />
+    <option name="totallyTimeSpent" value="18299000" />
   </component>
-  <component name="TodoView">
+  <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
     </todo-panel>
@@ -394,10 +399,10 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32996634" sideWeight="0.502445" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32996634" sideWeight="0.50488997" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294621" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32996634" sideWeight="0.49266502" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32996634" sideWeight="0.49755502" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32659933" sideWeight="0.49266502" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32996634" sideWeight="0.49511003" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32996634" sideWeight="0.49755502" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -458,7 +463,9 @@
     <MESSAGE value="+ {&#10;Поиск порта&#10;Остсылка snmp&#10;Монитор&#10;}&#10;-{&#10;Логика отсылки&#10;Аргументы запуска&#10;}" />
     <MESSAGE value="+ Скетч" />
     <MESSAGE value="Проверка наличия датчика на COM" />
-    <option name="LAST_COMMIT_MESSAGE" value="Проверка наличия датчика на COM" />
+    <MESSAGE value="Данные из Ком распарсены на XYZ" />
+    <MESSAGE value="TODO Аргументы запуска" />
+    <option name="LAST_COMMIT_MESSAGE" value="TODO Аргументы запуска" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -681,8 +688,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../AccelSenderLast/src/main/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="100" column="26" lean-forward="false" selection-start-line="100" selection-start-column="26" selection-end-line="100" selection-end-column="26" />
+        <state relative-caret-position="352">
+          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

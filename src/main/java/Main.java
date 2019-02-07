@@ -26,8 +26,7 @@ public class Main {
     }
     private static String portFinder()   {
         String stat ="failed - Port no found";
-        SerialPortList serialPortList = new SerialPortList();
-        for (String portlist :serialPortList.getPortNames()){
+        for (String portlist : SerialPortList.getPortNames()){
             serialPort = new SerialPort(portlist);
             String test;
             System.out.println(portlist + " search...");
@@ -41,7 +40,7 @@ public class Main {
                         SerialPort.FLOWCONTROL_RTSCTS_OUT);
                 test = serialPort.readString();
                 int i = 0;
-                while ((test == null) & (i<5000000)) {
+                while ((test == null) & (i<5000000)) { //Задержка - сколько?
                     test = serialPort.readString();
                     i++;
                 }
@@ -65,7 +64,11 @@ public class Main {
     public static void main(String[] args) throws IOException {
         for (String stt :args){
             System.out.println(stt);
-        }
+            }
+        //todo "Аргументы -?(-help) краткое руководство - отдельным класом helper
+        //todo "Аргументы -Ip -sensytive  установки для SnmpTrap + автопоиск Com
+        //todo "Аргумент -findCom возвращает COM
+        //todo "Аргументы -Ip -sensytive  установки для SnmpTrap + COM
         String port = portFinder();
         if (port.contains("failed")) System.out.println("AccelSensor in not connected...");
         else {
@@ -102,7 +105,7 @@ public class Main {
                     //serialPort.writeString("Get data");
                 }
                 catch (SerialPortException ex) {
-                    System.out.println(ex);
+                    //System.out.println(ex);
                 }
             }
         }
