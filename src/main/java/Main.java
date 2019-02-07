@@ -1,7 +1,5 @@
 
 import jssc.*;
-
-import javax.xml.bind.SchemaOutputResolver;
 import java.io.IOException;
 import java.util.StringTokenizer;
 
@@ -9,8 +7,7 @@ public class Main {
     private  static int X,Y,Z;
     private static SerialPort serialPort;
     private static void parcer(String str1){
-        int[] res = new int[3];
-        StringTokenizer st = new StringTokenizer(str1," ");
+       StringTokenizer st = new StringTokenizer(str1," ");
         if (st.countTokens()<3) {
             X = 0;
             Y = 0;
