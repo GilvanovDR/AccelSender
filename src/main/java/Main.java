@@ -1,4 +1,5 @@
 
+import com.sun.org.apache.xpath.internal.SourceTree;
 import jssc.*;
 import java.io.IOException;
 import java.util.StringTokenizer;
@@ -57,22 +58,35 @@ public class Main {
         }
         return stat;
     }
+    private static String IPADRES;
+    private static int SENSYTY =100;
+    private static TrapSender TRAP = new TrapSender();
 
     public static void main(String[] args) throws IOException {
-        for (String stt :args){
+        for (String stt : args) {
             System.out.println(stt);
+        }
+        if (args.length == 0) System.out.println("incorrect start key...");
+        if (args.length == 1)
+            if (args[0].equals("findCom")) System.out.println("Accel port is " + portFinder());
+            else System.out.println("incorrect start key...");
+        if (args.length == 3)
+            if (args[0].equals("snmp")) {
+                IPADRES = args[1];
+                try {
+                    TRAP.sendTrap(IPADRES, args[2]);
+                } catch (IllegalArgumentException e) {
+                    System.out.println("incorrect IP :" + e);
+                }
+
             }
-        //todo "Аргументы -?(-help) краткое руководство - отдельным класом helper
+        //todo Сделать порт сендер отдельным статисческим классом
         //todo "Аргументы -Ip -sensytive  установки для SnmpTrap + автопоиск Com
-        //todo "Аргумент -findCom возвращает COM
         //todo "Аргументы -Ip -sensytive  установки для SnmpTrap + COM
         String port = portFinder();
         if (port.contains("failed")) System.out.println("AccelSensor in not connected...");
         else {
         serialPort = new SerialPort(port);
-        //todo допилить трап сендер
-        TrapSender trap = new TrapSender();
-        trap.sendTrap("192.168.111.103"); //todo получить аргументы параметров запуска IP
         try {
             serialPort.openPort();
             //Выставляем параметры
@@ -90,16 +104,21 @@ public class Main {
             System.out.println("failed " + ex);
         }
     }}
-    private static class PortReader implements SerialPortEventListener {
+    private static class PortReader implements SerialPortEventListener{
         public void serialEvent(SerialPortEvent event) {
             if(event.isRXCHAR() && event.getEventValue() > 0){
                 try {
                     //Получаем ответ от устройства, обрабатываем данные и т.д.
                     parcer(serialPort.readString(event.getEventValue()));
-                    //И снова отправляем запрос
-                    System.out.println(""+ X + Y + Z);
-                    //    todo сделать проверку на превышения порога получить из параметров запуска
-                    //serialPort.writeString("Get data");
+                    if ((X>SENSYTY)||(Y>SENSYTY)||(Z>SENSYTY)) {
+                        try {
+                            TRAP.sendTrap(IPADRES,"Move detect");
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            System.out.println(e);
+                        }
+                    }
+                    // System.out.println(""+ X + Y + Z);
                 }
                 catch (SerialPortException ex) {
                     //System.out.println(ex);

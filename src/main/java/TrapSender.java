@@ -20,7 +20,7 @@ public class TrapSender {
     //Ideally Port 162 should be used to send receive Trap, any other available Port can be used
     private static final int port = 162;
 
-    public void sendTrap(String str) throws IOException {
+    public void sendTrap(String str, String text) throws IOException {
         /* Create Transport Mapping */
         ipAddress = str;
         TransportMapping transport = new DefaultUdpTransportMapping();
@@ -42,7 +42,7 @@ public class TrapSender {
         pdu.add(new VariableBinding(SnmpConstants.snmpTrapAddress,
                 new IpAddress(ipAddress)));
         pdu.add(new VariableBinding(new OID(Oid),new OctetString(
-                str)));
+                text)));
         pdu.setType(PDU.NOTIFICATION);
         // Send the PDU
         Snmp snmp = new Snmp(transport);
