@@ -1,5 +1,3 @@
-
-import com.sun.org.apache.xpath.internal.SourceTree;
 import jssc.*;
 import java.io.IOException;
 import java.util.StringTokenizer;
@@ -114,7 +112,7 @@ public class Main {
                         try {
                             TRAP.sendTrap(IPADRES,"Move detect");
                         } catch (IOException e) {
-                            e.printStackTrace();
+                           // e.printStackTrace();
                             System.out.println(e);
                         }
                     }
