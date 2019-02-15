@@ -401,7 +401,7 @@
       <workItem from="1549943522107" duration="719000" />
       <workItem from="1549945133227" duration="3305000" />
       <workItem from="1550041205098" duration="7090000" />
-      <workItem from="1550210549972" duration="9445000" />
+      <workItem from="1550210549972" duration="9773000" />
     </task>
     <task id="LOCAL-00001" summary="+ Скетч">
       <created>1549439612519</created>
@@ -473,11 +473,18 @@
       <option name="project" value="LOCAL" />
       <updated>1550213748356</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="+Добавлена дата событий&#10;+Поиск по порту ограничен 5 секундами&#10;+ Консольное приложение готово!">
+      <created>1550220599414</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1550220599414</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41942000" />
+    <option name="totallyTimeSpent" value="42270000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
