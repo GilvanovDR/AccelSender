@@ -57,18 +57,29 @@ public class Main {
         return stat;
     }
     private static String IPADRES;
-    private static int SENSYTY =100;
+    private static int SENSYTY;
     private static TrapSender TRAP = new TrapSender();
+    private static String PORT = "";
 
     public static void main(String[] args) throws IOException {
         for (String stt : args) {
             System.out.println(stt);
         }
         if (args.length == 0) System.out.println("incorrect start key...");
-        if (args.length == 1)
+
+        if (args.length == 1) {
             if (args[0].equals("findCom")) System.out.println("Accel port is " + portFinder());
             else System.out.println("incorrect start key...");
-        if (args.length == 3)
+        }
+
+        if (args.length == 2) {
+            IPADRES = args[0];
+            SENSYTY = Integer.parseInt(args[1]);
+            PORT = portFinder();
+            ComOpener();
+        }
+
+        if (args.length == 3){
             if (args[0].equals("snmp")) {
                 IPADRES = args[1];
                 try {
@@ -76,32 +87,45 @@ public class Main {
                 } catch (IllegalArgumentException e) {
                     System.out.println("incorrect IP :" + e);
                 }
-
             }
-        //todo Сделать порт сендер отдельным статисческим классом
-        //todo "Аргументы -Ip -sensytive  установки для SnmpTrap + автопоиск Com
-        //todo "Аргументы -Ip -sensytive  установки для SnmpTrap + COM
-        String port = portFinder();
-        if (port.contains("failed")) System.out.println("AccelSensor in not connected...");
+            else {
+                StringTokenizer st = new StringTokenizer(args[0], ".");
+                if (st.countTokens() == 4) {
+                    IPADRES = args[0];
+                    SENSYTY = Integer.parseInt(args[1]);
+                    PORT = args[2];
+                    ComOpener();
+                }
+                else System.out.println("incorrect start key...");
+            }
+        }
+
+        if (args.length > 3) {
+            System.out.println("incorrect start key...");
+        }
+    }
+
+    private static void ComOpener() {
+        if (PORT.contains("failed")) System.out.println("AccelSensor in not connected...");
         else {
-        serialPort = new SerialPort(port);
-        try {
-            serialPort.openPort();
-            //Выставляем параметры
-            serialPort.setParams(SerialPort.BAUDRATE_9600,
-                    SerialPort.DATABITS_8,
-                    SerialPort.STOPBITS_1,
-                    SerialPort.PARITY_NONE);
-            //Включаем аппаратное управление потоком
-            serialPort.setFlowControlMode(SerialPort.FLOWCONTROL_RTSCTS_IN |
-                    SerialPort.FLOWCONTROL_RTSCTS_OUT);
-            //Устанавливаем ивент лисенер и маску
-            serialPort.addEventListener(new PortReader(), SerialPort.MASK_RXCHAR);
+            serialPort = new SerialPort(PORT);
+            try {
+                serialPort.openPort();
+                //Выставляем параметры
+                serialPort.setParams(SerialPort.BAUDRATE_9600,
+                        SerialPort.DATABITS_8,
+                        SerialPort.STOPBITS_1,
+                        SerialPort.PARITY_NONE);
+                //Включаем аппаратное управление потоком
+                serialPort.setFlowControlMode(SerialPort.FLOWCONTROL_RTSCTS_IN |
+                        SerialPort.FLOWCONTROL_RTSCTS_OUT);
+                //Устанавливаем ивент лисенер и маску
+                serialPort.addEventListener(new PortReader(), SerialPort.MASK_RXCHAR);
+            } catch (SerialPortException ex) {
+                System.out.println("failed " + ex);
+            }
         }
-        catch (SerialPortException ex) {
-            System.out.println("failed " + ex);
-        }
-    }}
+    }
     private static class PortReader implements SerialPortEventListener{
         public void serialEvent(SerialPortEvent event) {
             if(event.isRXCHAR() && event.getEventValue() > 0){
