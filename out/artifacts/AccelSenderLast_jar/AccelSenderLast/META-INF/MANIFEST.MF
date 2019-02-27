@@ -1,6 +1,0 @@
-Manifest-Version: 1.0
-Class-Path: lib/snmp4j-2.7.0.jar lib/log4j-1.2.14.jar lib/jssc-2.8.0.j
- ar
-Build-Jdk: 1.8.0_191
-Main-Class: Main
-
